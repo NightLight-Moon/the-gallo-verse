@@ -90,7 +90,15 @@ growrate = 5
 sizeilia = 150
 
 # ------------------
+#outside while loop
+car_x_melody = 10
+car_y_melody = 100
+direction_melody = "right"
 
+# ------------------
+
+
+ 
 
 running = True
 while running:
@@ -257,6 +265,55 @@ while running:
     pygame.draw.circle(screen, (255, 255, 255), (x + ghost_x_maggie - 72, y + ghost_y_maggie + 115), 5)
     pygame.draw.circle(screen, (255, 255, 255), (x + ghost_x_maggie - 50, y + ghost_y_maggie + 115), 5)
 
+#Melody-------------------------------
+if car_x_melody > 450:
+       direction_melody = "left"
+    elif car_x_melody < 0:
+        direction_melody = "right"
+
+    if direction_melody == "right":
+        car_x_melody += 30
+    else:
+        car_x_melody -= 20
+    # GAME STATE UPDATES
+    # All game math and comparisons happen here
+    car_x_melody += 1
+
+    # DRAWING
+    # Must have these coordinates
+    x = 1280
+    y = 0
+    # Draw background
+
+    width = 640
+    height = 480
+
+    # Rather than screen.fill, draw a rectangle
+    pygame.draw.rect(screen, (0, 0, 0), (x, y, width, height))
+    pygame.draw.rect(screen, ("white"), (x, y + 200, width, 100))
+    pygame.draw.circle(screen, ("yellow"), (x + 100, y + 50), 20)
+    pygame.draw.circle(screen, ("black"), (x + 115, y + 50), 15)
+    pygame.draw.circle(screen, ("white"), (x + 15, y + 80), 5)
+    pygame.draw.circle(screen, ("white"), (x + 100, y + 100), 5)
+    pygame.draw.circle(screen, ("white"), (x + 160, y + 20), 5)
+    pygame.draw.circle(screen, ("white"), (x + 370, y + 10), 5)
+    pygame.draw.circle(screen, ("white"), (x + 120, y + 80), 5)
+    pygame.draw.circle(screen, ("white"), (x + 400, y + 100), 5)
+
+    for i in range(4):
+        pygame.draw.circle(screen, ("white"), (x + 200, y + 50 * i), 5)
+    for i in range(5):
+        pygame.draw.circle(screen, ("white"), (x + 250, y + 40 * i), 5)
+    for i in range(8):
+        pygame.draw.circle(screen, ("white"), (x + 300, y + 30 * i), 5)
+    for i in range(4):
+        pygame.draw.circle(screen, ("white"), (x + 400, y + 50 * i), 5)
+    # Must draw with reference to that coordinate
+    pygame.draw.rect(screen, (25, 221, 255), (x + car_x_melody, y + car_y_melody, 200, 100))
+    pygame.draw.rect(screen, (105, 100, 255), (x + car_x_melody + 200, y + car_y_melody, 20, 100))
+    pygame.draw.rect(screen, (105, 100, 255), (x + car_x_melody, y + car_y_melody, 20, 100))
+    pygame.draw.circle(screen, (200, 200, 255), (x + car_x_melody + 170, y + car_y_melody + 100), 40)
+    pygame.draw.circle(screen, (200, 255, 255), (x + car_x_melody + 50, y + car_y_melody + 100), 40)
 
     # DUNCAN -------------------------------
 
